@@ -28,6 +28,8 @@ public class PlanetDAO {
 	                p.setImage(rs.getString("image"));
 	                p.setDescription(rs.getString("description"));
 	                p.setDistance(rs.getString("distance"));
+	                p.setSatellites(rs.getString("satellites")); 
+	                p.setOrbitalPeriod(rs.getString("orbital_period"));
 	            }
 	        }
 
@@ -56,6 +58,8 @@ public class PlanetDAO {
                 p.setImage(rs.getString("image"));
                 p.setDescription(rs.getString("description"));
                 p.setDistance(rs.getString("distance"));
+                p.setSatellites(rs.getString("satellites")); 
+                p.setOrbitalPeriod(rs.getString("orbital_period"));
                 list.add(p);
             }
 

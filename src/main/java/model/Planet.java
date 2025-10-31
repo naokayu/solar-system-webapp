@@ -6,6 +6,8 @@ public class Planet {
     private String image;
     private String description;
     private String distance;
+    private String satellites;
+    private String orbitalPeriod;
 
     // --- Getter / Setter ---
     public int getId() { return id; }
@@ -22,4 +24,10 @@ public class Planet {
 
     public String getDistance() { return distance; }
     public void setDistance(String distance) { this.distance = distance; }
+    
+    public String getSatellites() {return satellites; }
+    public void setSatellites(String satellites) {this.satellites = satellites;}
+    
+    public String getOrbitalPeriod() {return orbitalPeriod; }
+    public void setOrbitalPeriod(String orbitalPeriod) {this.orbitalPeriod = orbitalPeriod;}
 }

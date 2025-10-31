@@ -80,6 +80,8 @@
         <h2><%= p.getName() %></h2>
         <p><%= p.getDescription() %></p>
         <p><small>太陽からの距離: <%= p.getDistance() %></small></p>
+        <p><small>主な衛星: <%= p.getSatellites() %></small></p>
+        <p><small>公転周期: <%= p.getOrbitalPeriod() %></small></p>
         <p><a href="planetList.jsp">← 一覧に戻る</a></p>
     </div>
 

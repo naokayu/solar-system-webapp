@@ -45,7 +45,7 @@
     z-index: 10;
   }
   
-/* 月の軌道＆月（地球の中心に配置される） */
+/* 月の軌道は地球の中で回す（クリックは要らなければ none のままでOK） */
 .moon-orbit {
   position: absolute;
   top: 50%;
@@ -56,45 +56,51 @@
   margin-left: -30px;
   border: 1px dashed rgba(255,255,255,0.18);
   border-radius: 50%;
-  animation: spin 4s linear infinite;   /* 月の公転速度 */
+  animation: spin 4s linear infinite;
   transform-origin: center;
-  z-index: 7;
+
+  pointer-events: none;
+  z-index: 25;
 }
+
 .moon {
   position: absolute;
   top: 0;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 20px;                      /* 月の大きさ */
-  z-index: 8;
-  z-index: 21;   /* ← 月はさらに上 */
+  font-size: 20px;
+  z-index: 40;
 }
 
   
 
-  /* 軌道（回転させる要素） */
-  .orbit {
-    --radius: 120px;      /* 惑星までの距離 */
-    --size:   18px;       /* 惑星の直径 */
-    --color:  #888;       /* 惑星の色 */
-    --period: 10s;        /* 1 周のアニメ時間 */
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: calc(var(--radius) * 2 * var(--scale));
-    height: calc(var(--radius) * 2 * var(--scale));
-    margin-top: calc(var(--radius) * -1 * var(--scale));
-    margin-left: calc(var(--radius) * -1 * var(--scale));
-    border: 1px dashed rgba(255,255,255,0.18);
-    border-radius: 50%;
-    animation: spin var(--period) linear infinite;
-    transform-origin: center;
-  }
+  /* 軌道そのものはクリック無効（見た目の円に当たり判定を持たせない） */
+.orbit {
+  --radius: 120px;
+  --size: 18px;
+  --period: 10s;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: calc(var(--radius) * 2 * var(--scale));
+  height: calc(var(--radius) * 2 * var(--scale));
+  margin-top: calc(var(--radius) * -1 * var(--scale));
+  margin-left: calc(var(--radius) * -1 * var(--scale));
+  border: 1px dashed rgba(255,255,255,0.18);
+  border-radius: 50%;
+  transform-origin: center;
+  animation: spin var(--period) linear infinite;
+
+  pointer-events: none;  /* ★ ここがポイント：軌道はクリック無効 */
+  z-index: 1;
+}
   .orbit > a.planet {
   pointer-events: auto;
 }
   
- .planet, a.planet {
+ /* 惑星（a要素）は確実に前面＆クリック可 */
+a.planet, .planet {
   position: absolute;
   top: 0;
   left: 50%;
@@ -112,21 +118,19 @@
 
   cursor: pointer;
   user-select: none;
-  caret-color: transparent; /* ← ★ これが決定打 ★ */
-
+  caret-color: transparent;
   text-decoration: none;
   color: inherit;
-  z-index: 20;
-  pointer-events: auto !important;
+
+  pointer-events: auto !important;  /* ★ 念押し */
+  z-index: 30;                      /* ★ 軌道より前面に */
 }
- 
 
-
-  @keyframes spin {
-    from { transform: rotate(0deg); }
-    to   { transform: rotate(360deg); }
-  }
-
+/* アニメーション定義 */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
 
 .carrier {
   position: absolute;
@@ -154,14 +158,20 @@
   }
   .planet:hover::after { opacity: 1; }
   
-  .rotator {
+  /* 惑星を載せる回転コンテナ。ここでクリックを復活させる */
+.rotator {
   position: absolute;
   top: 0;
   left: 50%;
   transform-origin: 50% calc(var(--radius) * var(--scale));
   animation: spin var(--period) linear infinite;
+
+  pointer-events: auto;  /* ★ rotatorはクリック有効 */
+  z-index: 2;
 }
-  
+  .orbit .rotator {
+  pointer-events: auto;
+}
 
   /* 惑星ごとのパラメータ（距離/サイズ/色/周期） */
   .mercury { --radius:  90px; --size: 12px; --color: #bfbfbf; --period:  6s; }
@@ -184,50 +194,55 @@
   <div class="sun"></div>
   <div class="orbit mercury">
   <div class="rotator">
-    <a href="planetDetail?id=1" class="planet">🩶</a>
+    <a href="planetDetail?id=1" class="planet">🩶</a> <!-- 水星 -->
   </div>
 </div>
 
 <div class="orbit venus">
   <div class="rotator">
-    <a href="planetDetail?id=2" class="planet">🟡</a>
+    <a href="planetDetail?id=2" class="planet">🟡</a> <!-- 金星 -->
   </div>
 </div>
 
 <div class="orbit earth">
   <div class="rotator">
-    <a href="planetDetail?id=3" class="planet">🌍</a>
+    <a href="planetDetail?id=3" class="planet">🌍</a> <!-- 地球 -->
     <div class="moon-orbit">
-      <a href="planetDetail?id=4" class="moon">🌙</a>
+      <a href="planetDetail?id=10" class="moon">🌙</a> <!-- 月（id=10） -->
     </div>
   </div>
 </div>
 
 <div class="orbit mars">
   <div class="rotator">
-    <a href="planetDetail?id=5" class="planet">🔴</a>
+    <a href="planetDetail?id=4" class="planet">🔴</a> <!-- 火星 -->
   </div>
 </div>
 
 <div class="orbit jupiter">
   <div class="rotator">
-    <a href="planetDetail?id=6" class="planet">🟤</a>
+    <a href="planetDetail?id=5" class="planet">🟤</a> <!-- 木星 -->
   </div>
 </div>
 
 <div class="orbit saturn">
   <div class="rotator">
-    <a href="planetDetail?id=7" class="planet">🪐</a>
+    <a href="planetDetail?id=6" class="planet">🪐</a> <!-- 土星 -->
   </div>
 </div>
 
 <div class="orbit uranus">
   <div class="rotator">
-    <a href="planetDetail?id=8" class="planet">🔵</a>
+    <a href="planetDetail?id=7" class="planet">🔵</a> <!-- 天王星 -->
   </div>
 </div>
 
 <div class="orbit neptune">
+  <div class="rotator">
+    <a href="planetDetail?id=8" class="planet">🔷</a> <!-- 海王星 -->
+  </div>
+</div>
+  
   <div class="rotator">
     <a href="planetDetail?id=9" class="planet">🔷</a>
   </div>

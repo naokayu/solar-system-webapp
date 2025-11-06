@@ -78,20 +78,35 @@
 <body>
     <h1>🌞 太陽系 惑星図鑑</h1>
 
-    <div class="planet-container">
-    <%
-        for (Planet p : planetList) {
-    %>
-        <div class="planet">
-            <a href="planetDetail?id=<%= p.getId() %>">
-                <img src="images/<%= p.getImage() %>" alt="<%= p.getName() %>">
-                <h3><%= p.getName() %></h3>
-            </a>
-        </div>
-    <%
-        }
-    %>
-    </div>
+   <div class="planet-container">
+<%
+    for (Planet p : planetList) {
 
+        String emoji = "";
+        switch (p.getName()) {
+            case "太陽": emoji = "🌞"; break;
+            case "水星": emoji = "🩶"; break;
+            case "金星": emoji = "🟡"; break;
+            case "地球": emoji = "🌍"; break;
+            case "月": emoji = "🌙"; break;
+            case "火星": emoji = "🔴"; break;
+            case "木星": emoji = "🟤"; break;
+            case "土星": emoji = "🪐"; break;
+            case "天王星": emoji = "🔵"; break;
+            case "海王星": emoji = "🔷"; break;
+        }
+%>
+    <div class="planet">
+        <a href="planetDetail?id=<%= p.getId() %>">
+            <div style="font-size:48px;"><%= emoji %></div>
+            <h3><%= p.getName() %></h3>
+        </a>
+</div>
+			<%
+			} // ← ★ for文の閉じタグ
+			%>
+		</div>
+    
+}
 </body>
 </html>

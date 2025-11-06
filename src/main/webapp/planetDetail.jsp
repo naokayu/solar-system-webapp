@@ -45,12 +45,20 @@
             box-shadow: 0 8px 15px rgba(0,0,0,0.5);
         }
 
-        .planet-detail img {
-            width: 250px;
-            height: 250px;
-            border-radius: 50%;
-            object-fit: cover;
-        }
+       .planet-detail img {
+    width: 260px;
+    height: 260px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.5);
+    transition: transform .35s ease, box-shadow .35s ease;
+}
+
+.planet-detail img:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 45px rgba(255, 255, 255, 0.75);
+}
 
         .planet-detail h2 {
             margin: 15px 0 10px;

@@ -5,6 +5,12 @@
 <meta charset="UTF-8">
 <title>🌞 公転シミュレーション（CSS版）</title>
 <style>
+@media (max-width: 600px) {
+  :root {
+    --scale: 0.55; /* スマホ時に小さくする */
+  }
+}
+
   :root {
     /* 全体スケールをまとめて変更したいときにここを調整 */
     --scale: 1;
@@ -43,6 +49,8 @@
     transform: translate(-50%, -50%);
     box-shadow: 0 0 35px 10px rgba(255, 204, 0, 0.6);
     z-index: 10;
+    pointer-events: auto;
+    cursor: pointer;
   }
   
 /* 月の軌道は地球の中で回す（クリックは要らなければ none のままでOK） */
@@ -68,11 +76,15 @@
   top: 0;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 20px;
+  font-size: 12px;
   z-index: 40;
+  pointer-events: auto; /* ← ★これ追加 ★ */
+  cursor: pointer;      /* ← 手のカーソル */
+  user-select: none;    /* ← 縦棒やドラッグ選択防止 */
 }
 
-  
+ 
+ 
 
   /* 軌道そのものはクリック無効（見た目の円に当たり判定を持たせない） */
 .orbit {
@@ -174,15 +186,16 @@ a.planet, .planet {
 }
 
   /* 惑星ごとのパラメータ（距離/サイズ/色/周期） */
-  .mercury { --radius:  90px; --size: 12px; --color: #bfbfbf; --period:  6s; }
-  .venus   { --radius: 130px; --size: 16px; --color: #caa85a; --period: 15s; }
-  .earth   { --radius: 170px; --size: 22px; --color: #3aa4ff; --period: 20s; }
-  .mars    { --radius: 210px; --size: 14px; --color: #ff5a3a; --period: 30s; }
-  .jupiter { --radius: 260px; --size: 28px; --color: #c78c5a; --period: 45s; }
-  .saturn  { --radius: 310px; --size: 26px; --color: #e0c47a; --period: 60s; }
-  .uranus  { --radius: 360px; --size: 22px; --color: #67d1d1; --period: 80s; }
-  .neptune { --radius: 410px; --size: 22px; --color: #4c70ff; --period: 95s; }
-
+  .mercury { --radius:  90px; --size: 10px; --period:  2s; }
+.venus   { --radius: 130px; --size: 14px; --period:  4s; }
+.earth   { --radius: 170px; --size: 16px; --period:  6s; }
+.moon    { font-size: 12px; } /* 月だけ別で調整 */
+.mars    { --radius: 210px; --size: 12px; --period:  9s; }
+.jupiter { --radius: 260px; --size: 30px; --period: 14s; }
+.saturn  { --radius: 310px; --size: 28px; --period: 18s; }
+.uranus  { --radius: 360px; --size: 20px; --period: 24s; }
+.neptune { --radius: 410px; --size: 18px; --period: 30s; }
+  
   a { color: #ffcc00; text-decoration: none; }
   a:hover { text-decoration: underline; }
 </style>
@@ -191,7 +204,7 @@ a.planet, .planet {
   <h1>🌞 太陽系 公転シミュレーション（CSSのみ）</h1>
 
   <div class="solar-system">
-  <div class="sun"></div>
+  <a href="planetDetail?id=9" class="sun"></a>
   <div class="orbit mercury">
   <div class="rotator">
     <a href="planetDetail?id=1" class="planet">🩶</a> <!-- 水星 -->
@@ -208,8 +221,9 @@ a.planet, .planet {
   <div class="rotator">
     <a href="planetDetail?id=3" class="planet">🌍</a> <!-- 地球 -->
     <div class="moon-orbit">
-      <a href="planetDetail?id=10" class="moon">🌙</a> <!-- 月（id=10） -->
-    </div>
+  <a href="planetDetail?id=10" class="moon">🌙</a>
+</div>
+    
   </div>
 </div>
 
@@ -249,7 +263,19 @@ a.planet, .planet {
 </div>
   
   
-
-  <p><a href="planetList.jsp">← 惑星一覧に戻る</a></p>
+  <p>
+  	<a href="planetList.jsp" style="
+  		display:inline-block;
+  		margin-top:20px;
+  		padding:10px 18px;
+  		background:#ffcc00;
+  		border-radius:8px;
+  		color:#000;
+  		font-weight:bold;
+  		text-decoration:none;
+  	">
+  		← 惑星一覧に戻る
+  	  </a>
+  	 </p>
 </body>
 </html>

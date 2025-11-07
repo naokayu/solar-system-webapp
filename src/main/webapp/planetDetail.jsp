@@ -78,20 +78,46 @@
         a:hover {
             text-decoration: underline;
         }
+        .info-box {
+    text-align: left;
+    margin-top: 15px;
+    font-size: 15px;
+    line-height: 1.6;
+    background: rgba(255, 255, 255, 0.07);
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.label {
+    font-weight: bold;
+    color: #ffcc00;
+}
+
+.back {
+    display: inline-block;
+    margin-top: 20px;
+    font-size: 15px;
+}
+        
     </style>
 </head>
 <body>
     <h1>🌞 太陽系 惑星詳細</h1>
 
     <div class="planet-detail">
-        <img src="images/<%= p.getImage() %>" alt="<%= p.getName() %>">
-        <h2><%= p.getName() %></h2>
-        <p><%= p.getDescription() %></p>
-        <p><small>太陽からの距離: <%= p.getDistance() %></small></p>
-        <p><small>主な衛星: <%= p.getSatellites() %></small></p>
-        <p><small>公転周期: <%= p.getOrbitalPeriod() %></small></p>
-        <p><a href="planetList.jsp">← 一覧に戻る</a></p>
+    <img src="images/<%= p.getImage() %>" alt="<%= p.getName() %>">
+    <h2><%= p.getName() %></h2>
+
+    <div class="info-box">
+        <p><span class="label">説明：</span> <%= p.getDescription() %></p>
+        <p><span class="label">太陽からの距離：</span> <%= p.getDistance() %></p>
+        <p><span class="label">主な衛星：</span> <%= p.getSatellites() %></p>
+        <p><span class="label">公転周期：</span> <%= p.getOrbitalPeriod() %></p>
     </div>
+
+    <a href="planetList.jsp" class="back">← 一覧に戻る</a>
+</div>
+    
 
 </body>
 </html>

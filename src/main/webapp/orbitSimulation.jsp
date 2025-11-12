@@ -257,10 +257,7 @@ a.planet, .planet {
   </div>
 </div>
   
-  <div class="rotator">
-    <a href="planetDetail?id=9" class="planet">🔷</a>
   </div>
-</div>
   
   
   <p>
@@ -277,5 +274,21 @@ a.planet, .planet {
   		← 惑星一覧に戻る
   	  </a>
   	 </p>
+	<p>
+		<a href="gallery.jsp"
+			style="display: inline-block; 
+			margin-top: 10px; 
+			padding: 10px 18px; 
+			background: #0099ff; 
+			border-radius: 8px; color: #fff; 
+			font-weight: bold; 
+			text-decoration: none; 
+			box-shadow: 0 0 10px rgba(0, 153, 255, 0.5); 
+			transition: transform 0.3s, box-shadow 0.3s;"
+			onmouseover="this.style.boxShadow='0 0 20px rgba(0,153,255,0.8)';"
+			onmouseout="this.style.boxShadow='0 0 10px rgba(0,153,255,0.5)';">
+			📸 宇宙フォトギャラリーへ </a>
+	</p>
+
 </body>
 </html>

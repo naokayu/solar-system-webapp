@@ -186,7 +186,7 @@ a.planet, .planet {
 }
 
   /* 惑星ごとのパラメータ（距離/サイズ/色/周期） */
-  .mercury { --radius:  90px; --size: 10px; --period:  2s; }
+.mercury { --radius:  90px; --size: 10px; --period:  2s; }
 .venus   { --radius: 130px; --size: 14px; --period:  4s; }
 .earth   { --radius: 170px; --size: 16px; --period:  6s; }
 .moon    { font-size: 12px; } /* 月だけ別で調整 */

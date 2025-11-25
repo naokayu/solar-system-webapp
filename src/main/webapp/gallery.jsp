@@ -141,26 +141,26 @@ a.back-btn:hover {
   </div>
   
   <div class="card">
-    <img src="images/andromeda.jpg" alt="アンドロメダ銀河">
+    <img src="images/ic443.jpg" alt="IC 443 くらげ星雲">
     <div class="card-info">
-      <h3>🌌 アンドロメダ銀河</h3>
-      <p>地球から最も近い巨大銀河。肉眼でも観測できる。</p>
+      <h3>🦑 IC 443（くらげ星雲）</h3>
+      <p>超新星残骸が作る独特の形。赤く広がるガスが美しい星雲。</p>
     </div>
   </div>
   
   <div class="card">
-    <img src="images/andromeda.jpg" alt="アンドロメダ銀河">
+    <img src="images/betelgeuse.jpg" alt="ベテルギウス">
     <div class="card-info">
-      <h3>🌌 アンドロメダ銀河</h3>
-      <p>地球から最も近い巨大銀河。肉眼でも観測できる。</p>
+      <h3>🔴 ベテルギウス</h3>
+      <p>オリオン座の肩に輝く赤色超巨星。将来超新星爆発する可能性も。</p>
     </div>
   </div>
   
-  <div class="card">
-    <img src="images/andromeda.jpg" alt="アンドロメダ銀河">
+   <div class="card">
+    <img src="images/m78.jpg" alt="M78">
     <div class="card-info">
-      <h3>🌌 アンドロメダ銀河</h3>
-      <p>地球から最も近い巨大銀河。肉眼でも観測できる。</p>
+      <h3>🌁 M78 反射星雲</h3>
+      <p>青く淡い光が美しい、オリオン座に広がる反射星雲。</p>
     </div>
   </div>
 
